@@ -53,5 +53,5 @@
             <span class="text-muted">TimeTable Generator © 2024. All rights reserved.</span>
         </div>
 
-        </ footer>
+    </footer>
 </div>

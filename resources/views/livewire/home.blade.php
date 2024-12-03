@@ -72,7 +72,7 @@
                             </thead>
                             <tbody>
                                 @forelse($classrooms as $classroom)
-                                    <tr>
+                                    <tr wire:key="classroom-{{ $classroom->id }}">
                                         <td>{{ $classroom->name }}</td>
                                         <td>
                                             <button 
@@ -83,7 +83,7 @@
                                             </button>
                                             <button 
                                                 wire:click="deleteClassroom({{ $classroom->id }})" 
-                                                wire:confirm="Êtes-vous sûr de vouloir supprimer cette classe ?"
+                                                wire:confirm="Are you sure you want to delete this classroom?"
                                                 class="btn btn-sm btn-outline-danger"
                                             >
                                             Delete
@@ -91,7 +91,7 @@
                                         </td>
                                     </tr>
                                 @empty
-                                    <tr>
+                                    <tr wire:key="no-classrooms">
                                         <td colspan="2" class="text-center">No classrooms found.</td>
                                     </tr>
                                 @endforelse
@@ -152,7 +152,7 @@
                             </thead>
                             <tbody>
                                 @forelse($subjects as $subject)
-                                    <tr>
+                                    <tr wire:key="subject-{{ $subject->id }}">
                                         <td>{{ $subject->name }}</td>
                                         <td>
                                             <button 
@@ -163,6 +163,7 @@
                                             </button>
                                             <button 
                                                 wire:click="deleteSubject({{ $subject->id }})" 
+                                                wire:confirm="Are you sure you want to delete this subject?"
                                                 class="btn btn-sm btn-outline-danger"
                                             >
                                                 Delete
@@ -170,7 +171,7 @@
                                         </td>
                                     </tr>
                                 @empty
-                                    <tr>
+                                    <tr wire:key="no-subjects">
                                         <td colspan="2" class="text-center">No subjects found.</td>
                                     </tr>
                                 @endforelse
@@ -233,7 +234,7 @@
                             </thead>
                             <tbody>
                                 @forelse($teachers as $teacher)
-                                    <tr>
+                                    <tr wire:key="teacher-{{ $teacher->id }}">
                                         <td>{{ $teacher->name }}</td>
                                         <td>
                                             <button 
@@ -244,6 +245,7 @@
                                             </button>
                                             <button 
                                                 wire:click="deleteTeacher({{ $teacher->id }})" 
+                                                wire:confirm="Are you sure you want to delete this teacher?"
                                                 class="btn btn-sm btn-outline-danger"
                                             >
                                                 Delete
@@ -251,7 +253,7 @@
                                         </td>
                                     </tr>
                                 @empty
-                                    <tr>
+                                    <tr wire:key="no-teachers">
                                         <td colspan="2" class="text-center">No teachers found.</td>
                                     </tr>
                                 @endforelse

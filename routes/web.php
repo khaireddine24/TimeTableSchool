@@ -7,6 +7,7 @@ use App\Livewire\Home;
 use App\Livewire\Generate;
 use App\Livewire\Records;
 use App\Livewire\TimetableView;
+use App\Http\Controllers\TimetableController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,5 @@ Route::get('/records', Records::class);
 Route::get('/archived', Archived::class);
 Route::get('/archive/{classId}', Archive::class)->name('archive.show');
 Route::get('/search', [Records::class, 'search'])->name('search');
-Route::get('/timetable/{classId}/pdf', [TimetableView::class, 'generatePDF'])->name('timetable.pdf');
+// Route::get('/timetable/{classId}/pdf', [TimetableView::class, 'generatePDF'])->name('timetable.pdf');
+Route::get('/timetable/{classId}/pdf', [TimetableController::class, 'generatePDF'])->name('timetable.pdf');
