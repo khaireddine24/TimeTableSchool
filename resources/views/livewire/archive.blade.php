@@ -21,6 +21,15 @@
                         <a class="nav-link" href="/archived">
                             Archived
                         </a>
+                        @auth
+<!-- Logout form (only visible for authenticated users) -->
+<form method="POST" action="{{ route('logout') }}" class="inline">
+    @csrf
+    <button type="submit" class="text-black nav-link bg-transparent border-0 hover:text-blue-500">
+        Logout
+    </button>
+</form>
+@endauth
                     </li>
                 </ul>
             </div>

@@ -3,13 +3,23 @@
         <div class="container">
             <a class="navbar-brand" href="/">TimeTable</a>
             <div class="d-flex flex-grow-1 justify-content-end">
-                <ul class="navbar-nav flex-row">
+                <ul class="navbar-nav flex-row align-items-center">
                     <li class="nav-item">
                         <a class="nav-link" href="generate">Generate</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Archived</a>
-                    </li>
+                    <!-- <li class="nav-item">
+                        <a class="nav-link" href="archived">Archived</a>
+                    </li> -->
+                    @auth
+<!-- Logout form (only visible for authenticated users) -->
+<form method="POST" action="{{ route('logout') }}" class="inline">
+    @csrf
+    <button type="submit" class="text-black nav-link bg-transparent border-0 hover:text-blue-500">
+        Logout
+    </button>
+</form>
+@endauth
+
                 </ul>
             </div>
         </div>

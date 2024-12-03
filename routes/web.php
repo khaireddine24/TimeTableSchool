@@ -5,27 +5,32 @@ use App\Livewire\Archive;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Home;
 use App\Livewire\Generate;
+use Illuminate\Support\Facades\Auth; // Add this line to import the Auth facade
 use App\Livewire\Records;
-use App\Livewire\TimetableView;
 use App\Http\Controllers\TimetableController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+// Public Routes (No authentication required)
+Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+
+Route::post('/login', [AuthenticatedSessionController::class, 'store'])->name('login.store');
 
 
-Route::get('/', Home::class);
-Route::get('/generate', Generate::class);
-Route::get('/records', Records::class);
-Route::get('/archived', Archived::class);
-Route::get('/archive/{classId}', Archive::class)->name('archive.show');
-Route::get('/search', [Records::class, 'search'])->name('search');
-// Route::get('/timetable/{classId}/pdf', [TimetableView::class, 'generatePDF'])->name('timetable.pdf');
-Route::get('/timetable/{classId}/pdf', [TimetableController::class, 'generatePDF'])->name('timetable.pdf');
+// Routes that require authentication
+Route::middleware('auth')->group(function () {
+    Route::get('/', Home::class);
+    Route::get('/generate', Generate::class);
+    Route::get('/records', Records::class);
+    Route::get('/archived', Archived::class);
+    Route::get('/archive/{classId}', Archive::class)->name('archive.show');
+    Route::get('/search', [Records::class, 'search'])->name('search');
+
+    // Routes that require authentication
+    Route::get('/timetable/{classId}/pdf', [TimetableController::class, 'generatePDF'])->name('timetable.pdf');
+
+    // Fallback route to redirect any undefined route to '/'
+Route::fallback(function () {
+    return redirect('/');
+});
+});
