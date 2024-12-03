@@ -5,10 +5,10 @@
         <div class="container">
             <a class="navbar-brand" href="/">TimeTable</a>
 
-            <div class="d-flex flex-grow-1 justify-content-end">
-                <ul class="navbar-nav flex-row">
+            <div class="d-flex flex-grow-1  justify-content-end ">
+                <ul class="navbar-nav flex-row  flex-nowrap	 ">
                     <li class="nav-item">
-                        <a class="nav-link active" href="/generate">
+                        <a class="nav-link" href="/generate">
                             Generate
                         </a>
                     </li>
@@ -21,7 +21,9 @@
                         <a class="nav-link" href="/archived">
                             Archived
                         </a>
-                        @auth
+                       
+                    </li>
+                    @auth
 <!-- Logout form (only visible for authenticated users) -->
 <form method="POST" action="{{ route('logout') }}" class="inline">
     @csrf
@@ -30,7 +32,6 @@
     </button>
 </form>
 @endauth
-                    </li>
                 </ul>
             </div>
         </div>
@@ -118,28 +119,10 @@
             font-family: 'Arial', sans-serif;
         }
 
-        /* Navbar Styling */
-        .navbar {
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
+       
+     
+      
 
-        .nav-link {
-            color: #ffffff !important;
-            padding: 0.5rem 1rem;
-            transition: background-color 0.3s, color 0.3s;
-            border-radius: 4px;
-        }
-
-        .nav-link:hover {
-            background-color: var(--hover-color) !important;
-            color: #f8f9fa !important;
-        }
-
-        .nav-item .active {
-            background-color: var(--hover-color) !important;
-            border-radius: 4px;
-        }
 
         /* Card Styling */
         .card {
