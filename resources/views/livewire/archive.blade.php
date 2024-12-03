@@ -8,13 +8,19 @@
             <div class="d-flex flex-grow-1 justify-content-end">
                 <ul class="navbar-nav flex-row">
                     <li class="nav-item">
-                        <a class="nav-link" href="/generate">Generate</a>
+                        <a class="nav-link active" href="/generate">
+                            Generate
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/records">Records</a>
+                        <a class="nav-link" href="/records">
+                            Records
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/archived">Archived</a>
+                        <a class="nav-link" href="/archived">
+                            Archived
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -24,14 +30,17 @@
     <div class="container-fluid mt-4">
         <div class="card">
             <div class="card-header bg-secondary text-white">
-                <h2 class="text-center">{{ $class->name }} Timetable</h2>
+                <h2 class="text-center mb-0">{{ $class->name }} Timetable</h2>
+                <a href="{{ route('timetable.pdf', $class->id) }}" class="btn btn-light">
+                    <img src="/PdfIcon.png" width="30" height="30"/> Download PDF
+                </a>
             </div>
             <div class="card-body">
                 @if ($timetableEntries->count() > 0)
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th></th> <!-- Empty corner cell -->
+                            <th></th>
                             @foreach(['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'] as $day)
                             <th class="text-center bg-success">{{ $day }}</th>
                             @endforeach
@@ -76,21 +85,151 @@
                 @endif
             </div>
         </div>
-        <div class="card-header bg-secondary text-white d-flex justify-content-between align-items-center">
-            <h2 class="text-center mb-0">{{ $class->name }} Timetable</h2>
-            <a href="{{ route('timetable.pdf', $class->id) }}" class="btn btn-light">
-                <i class="fas fa-file-pdf"></i> Download PDF
-            </a>
-        </div>
     </div>
-
 
     <!-- Footer with a professional look -->
     <footer class="footer mt-auto py-3 bg-dark text-light">
         <div class="container">
             <span class="text-muted">TimeTable Generator © 2024. All rights reserved.</span>
-
         </div>
     </footer>
+    <style>
+        :root {
+            --primary-color: #0062cc;
+            --secondary-color: #343a40;
+            --hover-color: #003f88;
+            --light-bg: #f8f9fa;
+        }
 
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--light-bg);
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Navbar Styling */
+        .navbar {
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .nav-link {
+            color: #ffffff !important;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s, color 0.3s;
+            border-radius: 4px;
+        }
+
+        .nav-link:hover {
+            background-color: var(--hover-color) !important;
+            color: #f8f9fa !important;
+        }
+
+        .nav-item .active {
+            background-color: var(--hover-color) !important;
+            border-radius: 4px;
+        }
+
+        /* Card Styling */
+        .card {
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Table Styling */
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+            text-align: center;
+            padding: 12px;
+            transition: background-color 0.3s ease;
+        }
+
+        .table th {
+            background-color: var(--primary-color);
+            color: white;
+            text-transform: uppercase;
+            font-size: 0.875rem;
+            letter-spacing: 0.5px;
+        }
+
+        .table tbody tr:hover {
+            background-color: rgba(0,98,204,0.05);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .card-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .card-header .btn {
+                margin-top: 10px;
+            }
+        }
+
+        /* Button Styling */
+        .btn-light {
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+
+        .btn-light:hover {
+            background-color: var(--primary-color);
+            color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Footer Styling */
+        .footer {
+            background-color: var(--secondary-color);
+            color: #adb5bd;
+            padding: 1rem;
+            margin-top: auto;
+            text-align: center;
+            font-size: 0.875rem;
+        }
+
+        .footer span {
+            color: #ced4da;
+        }
+
+        /* Additional Enhancements */
+        .subject-entry {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .subject-name {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 4px;
+        }
+
+        .teacher-name {
+            font-style: italic;
+            color: #6c757d;
+            font-size: 0.8rem;
+        }
+    </style>
 </div>
