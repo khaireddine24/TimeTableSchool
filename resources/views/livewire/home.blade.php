@@ -38,6 +38,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
+                        <img src="/ClassroomIcon.png" width="30" height="30"/>
                         {{ $editClassroomId ? 'Edit Classroom' : 'Add Classroom' }}
                     </div>
                     <div class="card-body">
@@ -89,14 +90,14 @@
                                                 wire:click="editClassroom({{ $classroom->id }})" 
                                                 class="btn btn-sm btn-outline-primary me-2"
                                             >
-                                                Edit
+                                                <img src="/EditIcon.png" height="30" width="30"/>
                                             </button>
                                             <button 
                                                 wire:click="deleteClassroom({{ $classroom->id }})" 
                                                 wire:confirm="Are you sure you want to delete this classroom?"
                                                 class="btn btn-sm btn-outline-danger"
                                             >
-                                            Delete
+                                            <img src="/DeleteIcon.png" width="30" height="30"/>
                                             </button>
                                         </td>
                                     </tr>
@@ -118,6 +119,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
+                        <img src="/SubjectIcon.png" width="30" height="30"/>
                         {{ $editSubjectId ? 'Edit Subject' : 'Add Subject' }}
                     </div>
                     <div class="card-body">
@@ -169,14 +171,14 @@
                                                 wire:click="editSubject({{ $subject->id }})" 
                                                 class="btn btn-sm btn-outline-primary me-2"
                                             >
-                                                Edit
+                                                <img src="/EditIcon.png" height="30" width="30"/>
                                             </button>
                                             <button 
                                                 wire:click="deleteSubject({{ $subject->id }})" 
                                                 wire:confirm="Are you sure you want to delete this subject?"
                                                 class="btn btn-sm btn-outline-danger"
                                             >
-                                                Delete
+                                            <img src="/DeleteIcon.png" width="30" height="30"/>
                                             </button>
                                         </td>
                                     </tr>
@@ -201,6 +203,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card">
                     <div class="card-header bg-primary text-white">
+                        <img src="/TeacherIcon.png" width="30" height="30"/>
                         {{ $editTeacherId ? 'Edit Teacher' : 'Add Teacher' }}
                     </div>
                     <div class="card-body">
@@ -251,14 +254,14 @@
                                                 wire:click="editTeacher({{ $teacher->id }})" 
                                                 class="btn btn-sm btn-outline-primary me-2"
                                             >
-                                                Edit
+                                                <img src="/EditIcon.png" width="30" height="30"/>
                                             </button>
                                             <button 
                                                 wire:click="deleteTeacher({{ $teacher->id }})" 
                                                 wire:confirm="Are you sure you want to delete this teacher?"
                                                 class="btn btn-sm btn-outline-danger"
                                             >
-                                                Delete
+                                                <img src="/DeleteIcon.png" width="30" height="30"/>
                                             </button>
                                         </td>
                                     </tr>
